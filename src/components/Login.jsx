@@ -86,9 +86,8 @@ export default function Login() {
               <div className="input-group mb-3">
                 <button className="btn btn-lg btn-light w-100 fs-6">
                   <img
-                    src="../assets/google.png"
-                    alt="Google Sign In"
-                    style={{ width: "20px" }}
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png"
+                    style={{ width: "30px" }}
                     className="me-2"
                   />
                   <small>Sign In with Google</small>
@@ -98,6 +97,9 @@ export default function Login() {
                 <small>
                   Don't have an account? <a href="#">Sign Up</a>
                 </small>
+              </div>
+              <div className="guest">
+                <Link to="/home">Continue as guest</Link>
               </div>
             </div>
           </div>
