@@ -20,4 +20,3 @@ const auth = getAuth(app);
 
 // Export auth and app
 export { auth };
-export default app;

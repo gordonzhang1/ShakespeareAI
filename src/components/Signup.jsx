@@ -6,11 +6,11 @@ import { useRef } from "react";
 import { Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function signup() {
+export default function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordconfirmRef = useRef();
-  const { signup } = useAuth();
+  const { signup, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -75,6 +75,7 @@ export default function signup() {
                 <h2>Hello, Again</h2>
                 <p>We are happy to have you back.</p>
                 {error && <Alert variant="danger">{error}</Alert>}
+                {JSON.stringify(currentUser)}
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="input-group mb-3">
