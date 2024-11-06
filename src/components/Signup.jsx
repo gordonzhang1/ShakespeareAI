@@ -75,7 +75,6 @@ export default function Signup() {
                 <h2>Hello, Again</h2>
                 <p>We are happy to have you back.</p>
                 {error && <Alert variant="danger">{error}</Alert>}
-                {JSON.stringify(currentUser)}
               </div>
               <form onSubmit={handleSubmit}>
                 <div className="input-group mb-3">
