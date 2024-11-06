@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import App from "./components/App";
+import Signup from "./components/Signup";
 
 export default function Index() {
   return (
@@ -11,6 +12,7 @@ export default function Index() {
             <Route index element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<App />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </BrowserRouter>
       </div>

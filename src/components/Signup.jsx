@@ -1,9 +1,11 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import "../Login.css";
+import "../Signup.css";
+import { useAuth } from "../../server/authcontext";
 
-export default function Login() {
+export default function Signup() {
   return (
-    <>
+    <div>
       <div className="container d-flex justify-content-center align-items-center min-vh-100">
         <div className="row border rounded-5 p-3 bg-white shadow box-area">
           <div
@@ -58,29 +60,18 @@ export default function Login() {
                   placeholder="Password"
                 />
               </div>
-              <div className="input-group mb-5 d-flex justify-content-between">
-                <div className="form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id="formCheck"
-                  />
-                  <label
-                    htmlFor="formCheck"
-                    className="form-check-label text-secondary"
-                  >
-                    <small>Remember Me</small>
-                  </label>
-                </div>
-                <div className="forgot">
-                  <small>
-                    <a href="#">Forgot Password?</a>
-                  </small>
-                </div>
+
+              <div className="confirm-password">
+                <input
+                  type="password"
+                  className="form-control form-control-lg bg-light fs-6"
+                  placeholder="Confirm Password"
+                />
               </div>
+
               <div className="input-group mb-3">
                 <button className="btn btn-lg btn-primary w-100 fs-6">
-                  Login
+                  Sign Up
                 </button>
               </div>
               <div className="input-group mb-3">
@@ -95,17 +86,14 @@ export default function Login() {
               </div>
               <div className="row">
                 <small>
-                  Don't have an account?
-                  <Link to="/signup"> Sign Up</Link>
+                  Have an account?
+                  <Link to="/login"> Log in</Link>
                 </small>
-              </div>
-              <div className="guest">
-                <Link to="/home">Continue as guest</Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
