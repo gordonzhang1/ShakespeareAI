@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import "../Signup.css";
 import { useAuth } from "../../server/authcontext";
 import { useRef } from "react";
@@ -13,6 +13,7 @@ export default function Signup() {
   const { signup } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -25,6 +26,7 @@ export default function Signup() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      navigate("/dashboard");
       //basically what this does is that it makes it so that the function doesnt continue until the signup function completes because it has an await before it, and we do this because it takes time to make api calls
       //wait for signup to finish.
     } catch {

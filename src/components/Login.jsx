@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../Login.css";
 import React, { useState } from "react";
 import "../Signup.css";
@@ -13,6 +13,7 @@ export default function Login() {
   const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -21,6 +22,7 @@ export default function Login() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
+      navigate("/dashboard");
       //basically what this does is that it makes it so that the function doesnt continue until the signup function completes because it has an await before it, and we do this because it takes time to make api calls
       //wait for signup to finish.
     } catch {
@@ -105,7 +107,7 @@ export default function Login() {
                   </div>
                   <div className="forgot">
                     <small>
-                      <a href="#">Forgot Password?</a>
+                      <Link to="/forgot-password">Forgot Password?</Link>
                     </small>
                   </div>
                 </div>
