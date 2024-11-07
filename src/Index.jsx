@@ -6,6 +6,7 @@ import { AuthProvider } from "../server/authcontext";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
 import ForgotPassword from "./components/ForgotPassword";
+import UpdateProfile from "./components/UpdateProfile";
 
 export default function Index() {
   return (
@@ -17,6 +18,10 @@ export default function Index() {
               <Route
                 path="/dashboard"
                 element={<PrivateRoute element={<Dashboard />} />}
+              />
+              <Route
+                path="/update-profile"
+                element={<PrivateRoute element={<UpdateProfile />} />}
               />
               <Route index element={<Login />} />
               <Route path="/login" element={<Login />} />
