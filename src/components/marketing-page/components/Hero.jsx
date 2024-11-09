@@ -74,7 +74,7 @@ export default function Hero() {
               fontSize: "clamp(3rem, 10vw, 3.5rem)",
             }}
           >
-            Our&nbsp;latest&nbsp;
+            Shakespeare&nbsp;
             <Typography
               component="span"
               variant="h1"
@@ -86,7 +86,7 @@ export default function Hero() {
                 }),
               })}
             >
-              products
+              AI
             </Typography>
           </Typography>
           <Typography
@@ -96,9 +96,8 @@ export default function Hero() {
               width: { sm: "100%", md: "80%" },
             }}
           >
-            Explore our cutting-edge dashboard, delivering high-quality
-            solutions tailored to your needs. Elevate your experience with
-            top-tier features and services.
+            Our AI-powered app captures, organizes, and structures and quizzes
+            you based on your hadnwritten notes.
           </Typography>
           <Stack
             direction={{ xs: "column", sm: "row" }}
