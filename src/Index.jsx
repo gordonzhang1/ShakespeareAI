@@ -25,13 +25,12 @@ export default function Index() {
                 path="/update-profile"
                 element={<PrivateRoute element={<UpdateProfile />} />}
               />
-              <Route index element={<Login />} />
-              <Route path="/login" element={<Login />} />
+              <Route index element={<FrontPage />} />
               <Route path="/home" element={<App />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/front" element={<FrontPage />} />
-              <Route path="/sign-in-new" element={<SigninNew />} />
+              <Route path="/" element={<FrontPage />} />
+              <Route path="/sign-in" element={<SigninNew />} />
             </Routes>
           </BrowserRouter>
         </AuthProvider>
