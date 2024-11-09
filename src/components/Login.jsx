@@ -100,7 +100,7 @@ export default function Login() {
                       htmlFor="formCheck"
                       className="form-check-label text-secondary"
                     >
-                      <small>Remember Me gordon</small>
+                      <small>Remember Me</small>
                     </label>
                   </div>
                   <div className="forgot">
