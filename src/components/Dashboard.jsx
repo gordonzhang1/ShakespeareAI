@@ -13,7 +13,7 @@ export default function Dashboard() {
 
     try {
       await logout();
-      navigate("/login");
+      navigate("/");
     } catch {
       setError("failed to log out");
     }
