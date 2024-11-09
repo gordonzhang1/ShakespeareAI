@@ -8,6 +8,7 @@ import Dashboard from "./components/Dashboard";
 import ForgotPassword from "./components/ForgotPassword";
 import UpdateProfile from "./components/UpdateProfile";
 import FrontPage from "./components/FrontPage";
+import SigninNew from "./components/SigninNew";
 
 export default function Index() {
   return (
@@ -30,6 +31,7 @@ export default function Index() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/front" element={<FrontPage />} />
+              <Route path="/sign-in-new" element={<SigninNew />} />
             </Routes>
           </BrowserRouter>
         </AuthProvider>
