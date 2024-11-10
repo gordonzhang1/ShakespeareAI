@@ -102,7 +102,13 @@ export default function AppAppBar() {
             >
               Sign in
             </Button>
-            <Button color="primary" variant="contained" size="small">
+            <Button
+              color="primary"
+              variant="contained"
+              size="small"
+              LinkComponent={Link}
+              to="/sign-up"
+            >
               Sign up
             </Button>
             <ColorModeIconDropdown />
