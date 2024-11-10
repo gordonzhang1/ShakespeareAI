@@ -84,7 +84,6 @@ export default function SignIn(props) {
       return;
     }
     try {
-      setError("");
       await login(
         document.getElementById("email").value,
         document.getElementById("password").value
@@ -93,7 +92,8 @@ export default function SignIn(props) {
       //basically what this does is that it makes it so that the function doesnt continue until the signup function completes because it has an await before it, and we do this because it takes time to make api calls
       //wait for signup to finish.
     } catch {
-      setError("Incorrect email or password");
+      setPasswordError(true);
+      setPasswordErrorMessage("Incorrect email or password");
     }
   }
 
