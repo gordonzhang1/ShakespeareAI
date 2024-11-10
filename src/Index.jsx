@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import App from "./components/App";
-import Signup from "./components/Signup";
+import SignupOld from "./components/SignupOld";
 import { AuthProvider } from "../server/authcontext";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
@@ -9,6 +9,7 @@ import ForgotPassword from "./components/ForgotPassword";
 import UpdateProfile from "./components/UpdateProfile";
 import FrontPage from "./components/FrontPage";
 import SigninNew from "./components/SigninNew";
+import SignUpNew from "./components/SignUpNew";
 
 export default function Index() {
   return (
@@ -27,7 +28,7 @@ export default function Index() {
               />
               <Route index element={<FrontPage />} />
               <Route path="/home" element={<App />} />
-              <Route path="/signup" element={<Signup />} />
+              <Route path="/sign-up" element={<SignUpNew />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/" element={<FrontPage />} />
               <Route path="/sign-in" element={<SigninNew />} />
