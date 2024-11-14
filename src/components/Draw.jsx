@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "../Draw.css";
 import { db, auth } from "../../server/firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 export default function Draw() {
   const canvasRef = useRef(null);
@@ -24,11 +24,39 @@ export default function Draw() {
     }
   };
 
+  const restoreCanvas = async () => {
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        const docRef = doc(db, "canvasData", user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const imageData = docSnap.data().imageData;
+          const canvas = canvasRef.current;
+          const ctx = canvas.getContext("2d");
+
+          const img = new Image();
+          img.src = imageData;
+
+          img.onload = () => {
+            ctx.drawImage(img, 0, 0);
+            console.log("Canvas restored from Firestore");
+          };
+        }
+      } catch (error) {
+        console.log("Failed to restore data", error);
+      }
+    }
+  };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "beige";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    restoreCanvas();
   }, []);
 
   function startDrawing(e) {
