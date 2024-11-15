@@ -97,7 +97,7 @@ export default function Hero() {
             }}
           >
             Our AI-powered app captures, organizes, and structures and quizzes
-            you based on your hadnwritten notes.
+            you based on your handwritten notes.
           </Typography>
           <Stack
             direction={{ xs: "column", sm: "row" }}
