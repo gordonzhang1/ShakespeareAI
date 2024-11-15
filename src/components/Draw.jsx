@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import "../Draw.css";
 import { db, auth } from "../../server/firebase";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-
 export default function Draw() {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
+  const [isErase, setIsErase] = useState(false);
 
   const saveCanvas = async () => {
     const canvas = canvasRef.current;
@@ -59,6 +59,10 @@ export default function Draw() {
     restoreCanvas();
   }, []);
 
+  function erase() {
+    setIsErase(true);
+  }
+
   function startDrawing(e) {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -72,17 +76,40 @@ export default function Draw() {
     const ctx = canvas.getContext("2d");
     if (!isDrawing) return;
 
-    ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
-    ctx.stroke();
+    if (isErase) {
+      const eraserSize = 20;
+      ctx.globalCompositeOperation = "destination-out"; // Use this mode for erasing
+      ctx.beginPath();
+      ctx.arc(
+        e.nativeEvent.offsetX,
+        e.nativeEvent.offsetY,
+        eraserSize / 2,
+        0,
+        Math.PI * 2
+      );
+      ctx.fill();
+      ctx.globalCompositeOperation = "source-over"; // Reset to default drawing mode
+    } else {
+      ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
   }
 
   function stopDrawing(e) {
     setIsDrawing(false);
   }
+
+  function drawtoggle() {
+    setIsErase(false);
+  }
+
   return (
     <>
+      <button onClick={erase}>Erase</button>
+      <button onClick={drawtoggle}>Draw</button>
+
       <canvas
         ref={canvasRef}
         id="canvas"
