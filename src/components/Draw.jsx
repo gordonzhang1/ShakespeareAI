@@ -2,6 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import "../Draw.css";
 import { db, auth } from "../../server/firebase";
 import { doc, setDoc, getDoc, updateDoc } from "firebase/firestore";
+import Button from "@mui/material/Button";
+import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
+import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import AutoFixHighOutlinedIcon from "@mui/icons-material/AutoFixHighOutlined";
 
 export default function Draw() {
   const canvasRef = useRef(null);
@@ -167,14 +172,87 @@ export default function Draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
+  const DeleteCanvas = async () => {
+    if (canvasData.length === 0) return;
+
+    // Remove the current canvas from local state
+    const newCanvasData = canvasData.filter(
+      (_, index) => index !== currentCanvasIndex
+    );
+
+    // Get the current user
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        const docRef = doc(db, "canvasData", user.uid);
+
+        if (newCanvasData.length === 0) {
+          // If no canvases are left, create a new blank canvas
+          const canvas = canvasRef.current;
+          const ctx = canvas.getContext("2d");
+          ctx.fillStyle = "beige";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          const blankCanvasData = [{ imageData: canvas.toDataURL() }];
+          await setDoc(docRef, { canvasData: blankCanvasData }); // Update Firestore
+          setCanvasData(blankCanvasData); // Update local state
+          setCurrentCanvasIndex(0); // Reset the index
+        } else {
+          // Update Firestore with the new canvas data
+          await setDoc(docRef, { canvasData: newCanvasData });
+
+          // Adjust the index and update local state
+          const newIndex = Math.min(
+            currentCanvasIndex,
+            newCanvasData.length - 1
+          );
+          setCanvasData(newCanvasData);
+          setCurrentCanvasIndex(newIndex);
+
+          // Load the new canvas at the adjusted index
+          const canvas = canvasRef.current;
+          const ctx = canvas.getContext("2d");
+          const img = new Image();
+          img.src = newCanvasData[newIndex]?.imageData || "";
+
+          img.onload = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+            ctx.drawImage(img, 0, 0);
+          };
+        }
+      } catch (error) {
+        console.error("Failed to delete canvas data from Firestore", error);
+      }
+    }
+  };
+
   return (
     <>
-      <button onClick={erase}>Erase</button>
-      <button onClick={drawtoggle}>Draw</button>
-      <button onClick={newCanvas}>New Canvas</button>
-      <button onClick={previousCanvas}>Previous Canvas</button>
-      <button onClick={nextCanvas}>Next Canvas</button>
-      <button onClick={clearFrame}>Clear Frame</button>
+      <Button variant="contained" onClick={previousCanvas}>
+        <ArrowBackIosOutlinedIcon />
+      </Button>
+      <Button variant="contained" onClick={nextCanvas}>
+        <ArrowForwardIosOutlinedIcon />
+      </Button>
+
+      <Button onClick={drawtoggle} variant="contained">
+        <ModeEditOutlineOutlinedIcon />
+      </Button>
+      <Button onClick={erase} variant="contained">
+        <AutoFixHighOutlinedIcon />
+      </Button>
+      <Button onClick={DeleteCanvas} variant="contained">
+        Delete
+      </Button>
+      <Button variant="contained" onClick={clearFrame}>
+        Clear Frame
+      </Button>
+      <Button variant="contained" onClick={newCanvas}>
+        New Canvas
+      </Button>
+      <Button variant="contained" onClick={saveCanvas}>
+        Save
+      </Button>
 
       <canvas
         ref={canvasRef}
@@ -186,7 +264,6 @@ export default function Draw() {
         onMouseUp={stopDrawing}
         onMouseLeave={stopDrawing}
       ></canvas>
-      <button onClick={saveCanvas}>Save</button>
     </>
   );
 }
