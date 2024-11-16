@@ -160,6 +160,12 @@ export default function Draw() {
     // Switch to the new blank canvas by updating the index
     setCurrentCanvasIndex(currentCanvasIndex + 1);
   }
+  function clearFrame() {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
 
   return (
     <>
@@ -168,6 +174,7 @@ export default function Draw() {
       <button onClick={newCanvas}>New Canvas</button>
       <button onClick={previousCanvas}>Previous Canvas</button>
       <button onClick={nextCanvas}>Next Canvas</button>
+      <button onClick={clearFrame}>Clear Frame</button>
 
       <canvas
         ref={canvasRef}
