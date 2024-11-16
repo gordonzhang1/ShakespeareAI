@@ -77,7 +77,7 @@ export default function Draw() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "beige";
+    ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     restoreCanvas();
   }, [currentCanvasIndex]); // Re-run whenever currentCanvasIndex changes
@@ -101,7 +101,6 @@ export default function Draw() {
 
     if (isErase) {
       const eraserSize = 20;
-      ctx.globalCompositeOperation = "destination-out"; // Use this mode for erasing
       ctx.beginPath();
       ctx.arc(
         e.nativeEvent.offsetX,
@@ -110,8 +109,8 @@ export default function Draw() {
         0,
         Math.PI * 2
       );
-      ctx.fill();
-      ctx.globalCompositeOperation = "source-over"; // Reset to default drawing mode
+      ctx.fillStyle = "white"; // Set the fill color to white
+      ctx.fill(); // Fill the circle with white to erase the content
     } else {
       ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
       ctx.strokeStyle = "black";
@@ -159,7 +158,7 @@ export default function Draw() {
     setCanvasData(newCanvasData);
 
     // Clear the canvas and draw a blank background
-    ctx.fillStyle = "beige";
+    ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Switch to the new blank canvas by updating the index
@@ -170,6 +169,8 @@ export default function Draw() {
     const ctx = canvas.getContext("2d");
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 
   const DeleteCanvas = async () => {
@@ -190,7 +191,7 @@ export default function Draw() {
           // If no canvases are left, create a new blank canvas
           const canvas = canvasRef.current;
           const ctx = canvas.getContext("2d");
-          ctx.fillStyle = "beige";
+          ctx.fillStyle = "white";
           ctx.fillRect(0, 0, canvas.width, canvas.height);
 
           const blankCanvasData = [{ imageData: canvas.toDataURL() }];
@@ -225,45 +226,58 @@ export default function Draw() {
       }
     }
   };
+  function undo() {}
 
   return (
     <>
-      <Button variant="contained" onClick={previousCanvas}>
-        <ArrowBackIosOutlinedIcon />
-      </Button>
-      <Button variant="contained" onClick={nextCanvas}>
-        <ArrowForwardIosOutlinedIcon />
-      </Button>
-
-      <Button onClick={drawtoggle} variant="contained">
-        <ModeEditOutlineOutlinedIcon />
-      </Button>
-      <Button onClick={erase} variant="contained">
-        <AutoFixHighOutlinedIcon />
-      </Button>
-      <Button onClick={DeleteCanvas} variant="contained">
-        Delete
-      </Button>
-      <Button variant="contained" onClick={clearFrame}>
-        Clear Frame
-      </Button>
-      <Button variant="contained" onClick={newCanvas}>
-        New Canvas
-      </Button>
-      <Button variant="contained" onClick={saveCanvas}>
-        Save
-      </Button>
-
-      <canvas
-        ref={canvasRef}
-        id="canvas"
-        width={window.innerWidth * 0.8}
-        height={window.innerHeight * 0.8}
-        onMouseDown={startDrawing}
-        onMouseMove={draw}
-        onMouseUp={stopDrawing}
-        onMouseLeave={stopDrawing}
-      ></canvas>
+      <div className="canvas-container">
+        <div className="page-nav-container">
+          <Button variant="outlined" onClick={previousCanvas}>
+            <ArrowBackIosOutlinedIcon />
+          </Button>
+          <Button variant="contained">{currentCanvasIndex + 1}</Button>
+          <Button variant="outlined" onClick={nextCanvas}>
+            <ArrowForwardIosOutlinedIcon />
+          </Button>
+        </div>
+        <div className="secondr-container">
+          <div className="draw-container">
+            <Button onClick={drawtoggle} variant="outlined">
+              <ModeEditOutlineOutlinedIcon />
+            </Button>
+            <Button onClick={erase} variant="outlined">
+              <AutoFixHighOutlinedIcon />
+            </Button>
+            <Button onClick={erase} variant="outlined">
+              Undo
+            </Button>
+          </div>
+          <div className="canf-container">
+            <Button onClick={DeleteCanvas} variant="outlined">
+              Delete Page
+            </Button>
+            <Button variant="outlined" onClick={clearFrame}>
+              Clear Page
+            </Button>
+            <Button variant="outlined" onClick={newCanvas}>
+              New Page
+            </Button>
+            <Button variant="outlined" onClick={saveCanvas}>
+              Save
+            </Button>
+          </div>
+        </div>
+        <canvas
+          ref={canvasRef}
+          id="canvas"
+          width={window.innerWidth * 0.8}
+          height={window.innerHeight * 0.8}
+          onMouseDown={startDrawing}
+          onMouseMove={draw}
+          onMouseUp={stopDrawing}
+          onMouseLeave={stopDrawing}
+        ></canvas>
+      </div>
     </>
   );
 }
