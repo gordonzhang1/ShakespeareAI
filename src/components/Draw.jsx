@@ -144,6 +144,8 @@ export default function Draw() {
 
     // Create a blank canvas imageData
     const blankCanvasData = canvas.toDataURL();
+
+    // Insert the blank canvas at the position after the current one
     newCanvasData.splice(currentCanvasIndex + 1, 0, {
       imageData: blankCanvasData,
     });
