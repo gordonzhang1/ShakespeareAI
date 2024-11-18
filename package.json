@@ -17,6 +17,7 @@
     "@mui/icons-material": "^6.1.7",
     "@mui/material": "^6.1.6",
     "@mui/styled-engine-sc": "^6.1.6",
+    "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "express": "^4.21.1",
     "firebase": "^11.0.1",

@@ -1,18 +1,15 @@
-// // Imports the Google Cloud client library
-// import vision from "@google-cloud/vision";
+// Imports the Google Cloud client library
+import vision from "@google-cloud/vision";
 
-// // Creates a client
-// const client = new vision.ImageAnnotatorClient();
+// Creates a client
+const client = new vision.ImageAnnotatorClient();
 
-// /**
-//  * TODO(developer): Uncomment the following line before running the sample.
-//  */
-// const fileName = "/Users/gordonzhang/Downloads/APITEST.jpeg";
+const fileName = "/Users/gordonzhang/Downloads/APITEST.jpeg";
 
-// // Read a local image as a text document
-// const [result] = await client.documentTextDetection(fileName);
-// const fullTextAnnotation = result.fullTextAnnotation;
-// console.log(`Full text: ${fullTextAnnotation.text}`);
+// Read a local image as a text document
+const [result] = await client.documentTextDetection(fileName);
+const fullTextAnnotation = result.fullTextAnnotation;
+console.log(`Full text: ${fullTextAnnotation.text}`);
 
 import OpenAI from "openai";
 const openai = new OpenAI({
@@ -22,10 +19,14 @@ const openai = new OpenAI({
 const completion = await openai.chat.completions.create({
   model: "gpt-4o-mini",
   messages: [
-    { role: "system", content: "You are a helpful assistant." },
+    {
+      role: "system",
+      content:
+        "You will create a series of questions based on the information given to quiz the user",
+    },
     {
       role: "user",
-      content: "Write a haiku about recursion in programming.",
+      content: fullTextAnnotation.text,
     },
   ],
 });
