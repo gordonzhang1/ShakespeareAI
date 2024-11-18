@@ -7,6 +7,7 @@ import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutl
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import AutoFixHighOutlinedIcon from "@mui/icons-material/AutoFixHighOutlined";
+import axios from "axios";
 
 export default function Draw() {
   const canvasRef = useRef(null);
@@ -228,6 +229,27 @@ export default function Draw() {
   };
   function undo() {}
 
+  function submit() {
+    const canvas = canvasRef.current;
+    canvas.toBlob(async (blob) => {
+      const formData = new FormData();
+      formData.append("image", blob, "image.png");
+
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/backend",
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    });
+  }
+
   return (
     <>
       <div className="canvas-container">
@@ -264,6 +286,9 @@ export default function Draw() {
             </Button>
             <Button variant="outlined" onClick={saveCanvas}>
               Save
+            </Button>
+            <Button variant="outlined" onClick={submit}>
+              Submit
             </Button>
           </div>
         </div>

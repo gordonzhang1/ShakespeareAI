@@ -9,9 +9,6 @@ function App() {
         <div className="canvas-con">
           <Draw />
         </div>
-        <div className="submit-container">
-          <SubmitNote />
-        </div>
       </div>
     </>
   );
