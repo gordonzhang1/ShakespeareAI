@@ -231,18 +231,23 @@ export default function Draw() {
 
   function submit() {
     const canvas = canvasRef.current;
-    const imageURL = canvas.toDataURL();
+    canvas.toBlob(async (blob) => {
+      const formData = new FormData();
+      formData.append("image", blob, "image.png");
 
-    axios
-      .post("/backend", {
-        image: imageURL,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/backend",
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
+        console.log(response.data);
+      } catch (error) {
         console.log(error);
-      });
+      }
+    });
   }
 
   return (
