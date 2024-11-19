@@ -7,6 +7,8 @@ import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutl
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import AutoFixHighOutlinedIcon from "@mui/icons-material/AutoFixHighOutlined";
+import Fab from "@mui/material/Fab";
+import { Zoom, Box } from "@mui/material";
 import axios from "axios";
 
 export default function Draw() {
@@ -15,6 +17,10 @@ export default function Draw() {
   const [isErase, setIsErase] = useState(false);
   const [canvasData, setCanvasData] = useState([]);
   const [currentCanvasIndex, setCurrentCanvasIndex] = useState(0);
+  const [showTextBox, setShowTextBox] = useState(false);
+  const [quizButtonText, setQuizButtonText] = useState("Quiz Me"); // Initial button text
+  const [showButton, setShowButton] = useState(true); // To control animation visibility
+  let previousCanvasState = null;
 
   // Save the current canvas as a new drawing in Firestore
   const saveCanvas = async () => {
@@ -227,27 +233,64 @@ export default function Draw() {
       }
     }
   };
-  function undo() {}
 
   function submit() {
     const canvas = canvasRef.current;
-    canvas.toBlob(async (blob) => {
-      const formData = new FormData();
-      formData.append("image", blob, "image.png");
+    const ctx = canvas.getContext("2d");
+    // Hide the button initially
+    setShowButton(false);
 
-      try {
-        const response = await axios.post(
-          "http://localhost:3000/backend",
-          formData,
-          {
-            headers: { "Content-Type": "multipart/form-data" },
-          }
-        );
-        console.log(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    });
+    // Wait for 150ms, then toggle button text
+    setTimeout(() => {
+      setQuizButtonText((prevText) =>
+        prevText === "Quiz Me" ? "Done" : "Quiz Me"
+      ); // Toggle text
+      setShowButton(true); // Show the button again after the animation
+    }, 150);
+
+    // canvas.toBlob(async (blob) => {
+    //   const formData = new FormData();
+    //   formData.append("image", blob, "image.png");
+
+    //   try {
+    //     const response = await axios.post(
+    //       "http://localhost:3000/backend",
+    //       formData,
+    //       {
+    //         headers: { "Content-Type": "multipart/form-data" },
+    //       }
+    //     );
+    //     console.log(response.data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // });
+
+    if (quizButtonText === "Quiz Me") {
+      const boxWidth = 900;
+      const boxHeight = 450;
+      const x = (canvas.width - boxWidth) / 2; // Center horizontally
+      const y = (canvas.height - boxHeight) / 2; // Center vertically
+      // Draw the box
+      ctx.fillStyle = "#000435";
+      ctx.fillRect(x, y, boxWidth, boxHeight);
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(x, y, boxWidth, boxHeight);
+
+      ctx.fillStyle = "white";
+      ctx.font = "20px Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(
+        "This is your quiz question!",
+        x + boxWidth / 2,
+        y + boxHeight / 2
+      );
+    } else if (quizButtonText === "Done") {
+      // If the button says "Done", restore the previous canvas content and clear the box
+      restoreCanvas();
+    }
   }
 
   return (
@@ -287,9 +330,6 @@ export default function Draw() {
             <Button variant="outlined" onClick={saveCanvas}>
               Save
             </Button>
-            <Button variant="outlined" onClick={submit}>
-              Quiz Me!
-            </Button>
           </div>
         </div>
         <canvas
@@ -303,6 +343,21 @@ export default function Draw() {
           onMouseLeave={stopDrawing}
         ></canvas>
       </div>
+      <Box sx={{ textAlign: "center", marginTop: 20 }} className="quiz-button">
+        <Zoom in={showButton} timeout={300}>
+          <Button
+            variant="contained"
+            onClick={submit}
+            sx={{
+              fontSize: "16px",
+              transition: "all 0.3s ease",
+              boxShadow: "none",
+            }}
+          >
+            {quizButtonText}
+          </Button>
+        </Zoom>
+      </Box>
     </>
   );
 }

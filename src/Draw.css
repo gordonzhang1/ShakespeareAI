@@ -1,7 +1,6 @@
 canvas {
   border: 3px solid black;
   width: 100%;
-  height: auto;
 }
 
 .canvas-container {
@@ -17,4 +16,10 @@ canvas {
 .secondr-container {
   display: flex;
   justify-content: space-between;
+}
+.quiz-button {
+  z-index: 999;
+  position: fixed;
+  left: 80vw;
+  bottom: 7vh;
 }

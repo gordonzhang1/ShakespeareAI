@@ -35,7 +35,7 @@ app.post("/backend", upload.single("image"), async (req, res) => {
         {
           role: "system",
           content:
-            "You will create a series of questions based on the information given to quiz the user",
+            "You will create questions based on the exactly the information given to quiz the user",
         },
         {
           role: "user",
