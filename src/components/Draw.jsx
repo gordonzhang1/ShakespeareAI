@@ -20,8 +20,7 @@ export default function Draw() {
   const [showQuizBox, setShowQuizBox] = useState(false);
   const [quizButtonText, setQuizButtonText] = useState("Quiz Me"); // Initial button text
   const [showButton, setShowButton] = useState(true); // To control animation visibility
-  let previousCanvasState = null;
-  var response = "asdfsfsd";
+  const [AIresponse, setAIresponse] = useState("");
 
   // Save the current canvas as a new drawing in Firestore
   const saveCanvas = async () => {
@@ -237,7 +236,6 @@ export default function Draw() {
 
   function submit() {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
     // Hide the button initially
     setShowButton(false);
 
@@ -249,23 +247,24 @@ export default function Draw() {
       setShowButton(true); // Show the button again after the animation
     }, 150);
 
-    // canvas.toBlob(async (blob) => {
-    //   const formData = new FormData();
-    //   formData.append("image", blob, "image.png");
+    canvas.toBlob(async (blob) => {
+      const formData = new FormData();
+      formData.append("image", blob, "image.png");
 
-    //   try {
-    //     const response = await axios.post(
-    //       "http://localhost:3000/backend",
-    //       formData,
-    //       {
-    //         headers: { "Content-Type": "multipart/form-data" },
-    //       }
-    //     );
-    //     console.log(response.data);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // });
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/backend",
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
+        console.log(response.data);
+        setAIresponse(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    });
 
     if (quizButtonText === "Quiz Me") {
       setShowQuizBox(true);
@@ -328,7 +327,7 @@ export default function Draw() {
         <div className="outer-quiz-box">
           <div id="quizBox">
             <div className="text-inside-quiz">
-              <p>{response}</p>
+              <p>{AIresponse}</p>
             </div>
           </div>
         </div>
