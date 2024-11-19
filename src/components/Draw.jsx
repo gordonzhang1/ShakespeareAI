@@ -288,7 +288,7 @@ export default function Draw() {
               Save
             </Button>
             <Button variant="outlined" onClick={submit}>
-              Submit
+              Quiz Me!
             </Button>
           </div>
         </div>
