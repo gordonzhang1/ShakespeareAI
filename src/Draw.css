@@ -23,3 +23,22 @@ canvas {
   left: 80vw;
   bottom: 7vh;
 }
+.outer-quiz-box {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 999;
+  bottom: 2vh;
+}
+
+#quizBox {
+  width: 60vw;
+  height: 50vh;
+  background-color: #000435;
+  padding: 3%;
+}
+
+.text-inside-quiz {
+  color: white;
+}

@@ -17,10 +17,11 @@ export default function Draw() {
   const [isErase, setIsErase] = useState(false);
   const [canvasData, setCanvasData] = useState([]);
   const [currentCanvasIndex, setCurrentCanvasIndex] = useState(0);
-  const [showTextBox, setShowTextBox] = useState(false);
+  const [showQuizBox, setShowQuizBox] = useState(false);
   const [quizButtonText, setQuizButtonText] = useState("Quiz Me"); // Initial button text
   const [showButton, setShowButton] = useState(true); // To control animation visibility
   let previousCanvasState = null;
+  var response = "asdfsfsd";
 
   // Save the current canvas as a new drawing in Firestore
   const saveCanvas = async () => {
@@ -267,29 +268,9 @@ export default function Draw() {
     // });
 
     if (quizButtonText === "Quiz Me") {
-      const boxWidth = 900;
-      const boxHeight = 450;
-      const x = (canvas.width - boxWidth) / 2; // Center horizontally
-      const y = (canvas.height - boxHeight) / 2; // Center vertically
-      // Draw the box
-      ctx.fillStyle = "#000435";
-      ctx.fillRect(x, y, boxWidth, boxHeight);
-      ctx.strokeStyle = "white";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(x, y, boxWidth, boxHeight);
-
-      ctx.fillStyle = "white";
-      ctx.font = "20px Arial";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText(
-        "This is your quiz question!",
-        x + boxWidth / 2,
-        y + boxHeight / 2
-      );
+      setShowQuizBox(true);
     } else if (quizButtonText === "Done") {
-      // If the button says "Done", restore the previous canvas content and clear the box
-      restoreCanvas();
+      setShowQuizBox(!showQuizBox);
     }
   }
 
@@ -343,6 +324,16 @@ export default function Draw() {
           onMouseLeave={stopDrawing}
         ></canvas>
       </div>
+      {showQuizBox && (
+        <div className="outer-quiz-box">
+          <div id="quizBox">
+            <div className="text-inside-quiz">
+              <p>{response}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       <Box sx={{ textAlign: "center", marginTop: 20 }} className="quiz-button">
         <Zoom in={showButton} timeout={300}>
           <Button
