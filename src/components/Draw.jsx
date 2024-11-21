@@ -331,7 +331,7 @@ export default function Draw() {
       </div>
       {showQuizBox && (
         <div className="outer-quiz-box">
-          <div id="quizBox">
+          <div id="quizBox" className={loading ? "" : "loaded"}>
             {loading ? (
               <CircularProgress />
             ) : (

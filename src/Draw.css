@@ -37,6 +37,30 @@ canvas {
   height: 50vh;
   background-color: #000435;
   padding: 3%;
+  border-radius: 10px;
+  position: relative;
+}
+
+#quizBox.loaded::after,
+#quizBox.loaded::before {
+  --angle: 0deg;
+  content: "";
+  position: absolute;
+  height: 90%;
+  width: 102%;
+  background: red;
+  z-index: -1;
+  border-radius: 15px;
+  background-image: conic-gradient(
+    from var(--angle),
+    #ff4545,
+    #00ff99,
+    #006aff,
+    #ff0095,
+    #ff4545
+  );
+  animation: 3s spin linear infinite;
+  translate: -5% -13%;
 }
 
 .text-inside-quiz {
