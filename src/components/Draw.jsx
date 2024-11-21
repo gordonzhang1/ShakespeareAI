@@ -12,6 +12,7 @@ import { Zoom, Box } from "@mui/material";
 import axios from "axios";
 import Stars from "../assets/Stars.png";
 import CircularProgress from "@mui/material/CircularProgress";
+import BasicMenu from "./Menu";
 
 export default function Draw() {
   const canvasRef = useRef(null);
@@ -283,13 +284,16 @@ export default function Draw() {
     <>
       <div className="canvas-container">
         <div className="page-nav-container">
-          <Button variant="outlined" onClick={previousCanvas}>
-            <ArrowBackIosOutlinedIcon />
-          </Button>
-          <Button variant="contained">{currentCanvasIndex + 1}</Button>
-          <Button variant="outlined" onClick={nextCanvas}>
-            <ArrowForwardIosOutlinedIcon />
-          </Button>
+          <BasicMenu className="draw-menu" />
+          <div className="select-con">
+            <Button variant="outlined" onClick={previousCanvas}>
+              <ArrowBackIosOutlinedIcon />
+            </Button>
+            <Button variant="contained">{currentCanvasIndex + 1}</Button>
+            <Button variant="outlined" onClick={nextCanvas}>
+              <ArrowForwardIosOutlinedIcon />
+            </Button>
+          </div>
         </div>
         <div className="secondr-container">
           <div className="draw-container">

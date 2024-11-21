@@ -11,6 +11,20 @@ canvas {
 
 .page-nav-container {
   align-self: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.select-con {
+  position: absolute; /* Position it absolutely within the container */
+  left: 50%; /* Move it to the middle horizontally */
+  transform: translateX(
+    -50%
+  ); /* Offset it by half its width to truly center it */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .secondr-container {
@@ -110,6 +124,10 @@ canvas {
     #ff4545
   );
   animation: 3s spin linear infinite;
+}
+
+.draw-menu {
+  align-self: left;
 }
 
 @keyframes spin {
