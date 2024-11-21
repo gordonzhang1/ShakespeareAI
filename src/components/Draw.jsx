@@ -336,7 +336,15 @@ export default function Draw() {
               <CircularProgress />
             ) : (
               <div className="text-inside-quiz">
-                {AIresponse ? <p>{AIresponse}</p> : <p>No response yet</p>}
+                {AIresponse ? (
+                  AIresponse.split("?") // Split the response by the '?' character
+                    .filter((item) => item.trim() !== "") // Remove empty items
+                    .map((question, index) => (
+                      <p key={index}>{question.trim()}?</p>
+                    ))
+                ) : (
+                  <p>No response yet</p>
+                )}
               </div>
             )}
           </div>

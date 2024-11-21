@@ -46,7 +46,7 @@ canvas {
   --angle: 0deg;
   content: "";
   position: absolute;
-  height: 90%;
+  height: 75%;
   width: 102%;
   background: red;
   z-index: -1;
@@ -60,7 +60,7 @@ canvas {
     #ff4545
   );
   animation: 3s spin linear infinite;
-  translate: -5% -13%;
+  translate: -5% -14%;
 }
 
 .text-inside-quiz {
