@@ -42,3 +42,57 @@ canvas {
 .text-inside-quiz {
   color: white;
 }
+
+.stars-img {
+  width: 2vw;
+  height: auto;
+}
+
+.star-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: relative;
+}
+
+.quiz-button-inner {
+  position: relative;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.quiz-button-inner::after,
+.quiz-button-inner::before {
+  --angle: 0deg;
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 106%;
+  background: red;
+  z-index: -1;
+  padding: 3.1vh;
+  border-radius: 15px;
+  background-image: conic-gradient(
+    from var(--angle),
+    #ff4545,
+    #00ff99,
+    #006aff,
+    #ff0095,
+    #ff4545
+  );
+  animation: 3s spin linear infinite;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}

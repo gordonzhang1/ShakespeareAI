@@ -10,6 +10,8 @@ import AutoFixHighOutlinedIcon from "@mui/icons-material/AutoFixHighOutlined";
 import Fab from "@mui/material/Fab";
 import { Zoom, Box } from "@mui/material";
 import axios from "axios";
+import Stars from "../assets/Stars.png";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Draw() {
   const canvasRef = useRef(null);
@@ -21,6 +23,7 @@ export default function Draw() {
   const [quizButtonText, setQuizButtonText] = useState("Quiz Me"); // Initial button text
   const [showButton, setShowButton] = useState(true); // To control animation visibility
   const [AIresponse, setAIresponse] = useState("");
+  const [loading, setLoading] = useState(false); // Track loading state
 
   // Save the current canvas as a new drawing in Firestore
   const saveCanvas = async () => {
@@ -252,6 +255,7 @@ export default function Draw() {
       formData.append("image", blob, "image.png");
 
       try {
+        setLoading(true);
         const response = await axios.post(
           "http://localhost:3000/backend",
           formData,
@@ -263,6 +267,8 @@ export default function Draw() {
         setAIresponse(response.data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     });
 
@@ -326,9 +332,13 @@ export default function Draw() {
       {showQuizBox && (
         <div className="outer-quiz-box">
           <div id="quizBox">
-            <div className="text-inside-quiz">
-              <p>{AIresponse}</p>
-            </div>
+            {loading ? (
+              <CircularProgress />
+            ) : (
+              <div className="text-inside-quiz">
+                {AIresponse ? <p>{AIresponse}</p> : <p>No response yet</p>}
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -336,15 +346,20 @@ export default function Draw() {
       <Box sx={{ textAlign: "center", marginTop: 20 }} className="quiz-button">
         <Zoom in={showButton} timeout={300}>
           <Button
+            className="quiz-button-inner"
             variant="contained"
             onClick={submit}
             sx={{
               fontSize: "16px",
               transition: "all 0.3s ease",
               boxShadow: "none",
+              borderRadius: "12px",
             }}
           >
-            {quizButtonText}
+            <div className="star-con">
+              <img className="stars-img" src={Stars} />
+              {quizButtonText}
+            </div>
           </Button>
         </Zoom>
       </Box>
