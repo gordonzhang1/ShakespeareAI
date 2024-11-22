@@ -18,23 +18,23 @@ const items = [
     icon: <ViewQuiltRoundedIcon />,
     title: "Dashboard",
     description:
-      "This item could provide a snapshot of the most important metrics or data points related to the product.",
+      "Our dashboard features a simple digital-note taking design and saves your notes to your account.",
     imageLight: `url("${"https://mui.com"}/static/images/templates/templates-images/dash-light.png")`,
     imageDark: `url("${"https://mui.com"}/static/images/templates/templates-images/dash-dark.png")`,
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
-    title: "Mobile integration",
+    title: "Quiz Me!",
     description:
-      "This item could provide information about the mobile app version of the product.",
+      "Simply press quiz me and our AI model will take the information that you wrote down and quiz you on it.",
     imageLight: `url("${"https://mui.com"}/static/images/templates/templates-images/mobile-light.png")`,
     imageDark: `url("${"https://mui.com"}/static/images/templates/templates-images/mobile-dark.png")`,
   },
   {
     icon: <DevicesRoundedIcon />,
-    title: "Available on all platforms",
+    title: "Seamless Synchronization",
     description:
-      "This item could let users know the product is available on all platforms, such as web, mobile, and desktop.",
+      "Your notes and progress are automatically synced across all your devices, ensuring you can pick up right where you left off.",
     imageLight: `url("${"https://mui.com"}/static/images/templates/templates-images/devices-light.png")`,
     imageDark: `url("${"https://mui.com"}/static/images/templates/templates-images/devices-dark.png")`,
   },
@@ -159,9 +159,9 @@ export default function Features() {
           variant="body1"
           sx={{ color: "text.secondary", mb: { xs: 2, sm: 4 } }}
         >
-          Provide a brief overview of the key features of the product. For
-          example, you could list the number of features, their types or
-          benefits, and add-ons.
+          ShakespeareAI analyzes your handwritten notes after each page and uses
+          AI to generate personalized quizzes, reinforcing your understanding
+          and retention.
         </Typography>
       </Box>
       <Box
