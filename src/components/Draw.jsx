@@ -13,6 +13,7 @@ import axios from "axios";
 import Stars from "../assets/Stars.png";
 import CircularProgress from "@mui/material/CircularProgress";
 import BasicMenu from "./Menu";
+import Logo from "../assets/logo-tran.png";
 
 export default function Draw() {
   const canvasRef = useRef(null);
@@ -369,7 +370,7 @@ export default function Draw() {
             }}
           >
             <div className="star-con">
-              <img className="stars-img" src={Stars} />
+              <img className="stars-img" src={Logo} />
               {quizButtonText}
             </div>
           </Button>

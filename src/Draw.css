@@ -138,3 +138,7 @@ canvas {
     --angle: 360deg;
   }
 }
+.stars-img {
+  width: 4vw;
+  height: auto;
+}
