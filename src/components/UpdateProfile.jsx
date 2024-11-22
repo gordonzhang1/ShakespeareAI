@@ -68,7 +68,7 @@ export default function UpdateProfile() {
                 fontWeight: 600,
               }}
             >
-              Update Profile
+              ShakespeareAI
             </p>
             <small
               className="text-white text-wrap text-center"
@@ -84,8 +84,7 @@ export default function UpdateProfile() {
           <div className="col-md-6 right-box">
             <div className="row align-items-center">
               <div className="header-text mb-4">
-                <h2>Hello, Again</h2>
-                <p>We are happy to have you back.</p>
+                <h2>Update Profile</h2>
                 {error && <Alert variant="danger">{error}</Alert>}
               </div>
               <form onSubmit={handleSubmit}>
