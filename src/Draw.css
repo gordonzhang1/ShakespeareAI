@@ -44,7 +44,7 @@ canvas {
   justify-content: center;
   position: absolute;
   z-index: 999;
-  bottom: 2vh;
+  bottom: 20vh;
 }
 
 #quizBox {
@@ -56,7 +56,7 @@ canvas {
   position: relative;
 }
 
-#quizBox.loaded::after,
+/* #quizBox.loaded::after,
 #quizBox.loaded::before {
   --angle: 0deg;
   content: "";
@@ -76,7 +76,7 @@ canvas {
   );
   animation: 3s spin linear infinite;
   translate: -5% -14%;
-}
+} */
 
 .text-inside-quiz {
   color: white;
