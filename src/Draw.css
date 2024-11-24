@@ -34,8 +34,9 @@ canvas {
 .quiz-button {
   z-index: 999;
   position: fixed;
-  left: 80vw;
+  left: 77vw;
   bottom: 7vh;
+  display: flex;
 }
 .outer-quiz-box {
   width: 80vw;
@@ -109,11 +110,10 @@ canvas {
   --angle: 0deg;
   content: "";
   position: absolute;
-  height: 100%;
-  width: 106%;
+  height: 118%;
+  width: 108%;
   background: red;
   z-index: -1;
-  padding: 3.1vh;
   border-radius: 15px;
   background-image: conic-gradient(
     from var(--angle),

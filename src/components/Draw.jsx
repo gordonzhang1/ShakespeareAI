@@ -367,6 +367,7 @@ export default function Draw() {
               transition: "all 0.3s ease",
               boxShadow: "none",
               borderRadius: "12px",
+              backgroundColor: "#000435",
             }}
           >
             <div className="star-con">
