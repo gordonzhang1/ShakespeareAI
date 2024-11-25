@@ -26,6 +26,7 @@ export default function Draw() {
   const [showButton, setShowButton] = useState(true); // To control animation visibility
   const [AIresponse, setAIresponse] = useState("");
   const [loading, setLoading] = useState(false); // Track loading state
+  let saveTimeout = useRef(null);
 
   // Save the current canvas as a new drawing in Firestore
   const saveCanvas = async () => {
@@ -53,6 +54,11 @@ export default function Draw() {
         console.log("Failed to save data to firestore ", error);
       }
     }
+  };
+
+  const debounceSave = () => {
+    clearTimeout(saveTimeout.current);
+    saveTimeout.current = setTimeout(saveCanvas, 1500); // Wait for 1.5 seconds before saving
   };
 
   // Restore the selected canvas from Firestore
@@ -129,6 +135,7 @@ export default function Draw() {
       ctx.lineWidth = 2;
       ctx.stroke();
     }
+    debounceSave();
   }
 
   function stopDrawing(e) {
