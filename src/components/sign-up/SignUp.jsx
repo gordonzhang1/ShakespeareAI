@@ -22,6 +22,7 @@ import { useAuth } from "../../../server/authcontext";
 import { useRef } from "react";
 import { Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useEmail } from "../EmailContext";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -78,6 +79,7 @@ export default function SignUp(props) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { email } = useEmail(); // Access the email state
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -167,6 +169,7 @@ export default function SignUp(props) {
                 error={emailError}
                 helperText={emailErrorMessage}
                 color={passwordError ? "error" : "primary"}
+                value={email}
               />
             </FormControl>
             <FormControl>

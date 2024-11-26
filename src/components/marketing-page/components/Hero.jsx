@@ -10,6 +10,8 @@ import Typography from "@mui/material/Typography";
 
 import { visuallyHidden } from "@mui/utils";
 import { styled } from "@mui/material/styles";
+import { useEmail } from "../../EmailContext";
+import { useNavigate } from "react-router-dom";
 
 const StyledBox = styled("div")(({ theme }) => ({
   alignSelf: "center",
@@ -37,6 +39,14 @@ const StyledBox = styled("div")(({ theme }) => ({
 }));
 
 export default function Hero() {
+  const { setEmail } = useEmail(); // Destructure the setEmail function
+  const handleInputChange = (e) => {
+    setEmail(e.target.value); // Update the email in the context
+  };
+  const navigate = useNavigate();
+  function handleStartClick() {
+    navigate("/sign-up");
+  }
   return (
     <Box
       id="hero"
@@ -122,12 +132,14 @@ export default function Hero() {
                   "aria-label": "Enter your email address",
                 },
               }}
+              onChange={handleInputChange}
             />
             <Button
               variant="contained"
               color="primary"
               size="small"
               sx={{ minWidth: "fit-content" }}
+              onClick={handleStartClick}
             >
               Start now
             </Button>
