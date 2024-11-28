@@ -326,9 +326,6 @@ export default function Draw() {
             <Button variant="outlined" onClick={newCanvas}>
               New Page
             </Button>
-            <Button variant="outlined" onClick={saveCanvas}>
-              Save
-            </Button>
           </div>
         </div>
         <canvas
