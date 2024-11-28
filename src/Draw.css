@@ -110,8 +110,8 @@ canvas {
   --angle: 0deg;
   content: "";
   position: absolute;
-  height: 118%;
-  width: 108%;
+  height: 116%;
+  width: 106%;
   background: red;
   z-index: -1;
   border-radius: 15px;
