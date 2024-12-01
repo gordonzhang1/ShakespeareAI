@@ -289,55 +289,81 @@ export default function Draw() {
     }
   }
 
+  function handlePreviewClick(index) {
+    setCurrentCanvasIndex(index);
+  }
+
   return (
     <>
-      <div className="canvas-container">
-        <div className="page-nav-container">
-          <BasicMenu className="draw-menu" />
-          <div className="select-con">
-            <Button variant="outlined" onClick={previousCanvas}>
-              <ArrowBackIosOutlinedIcon />
-            </Button>
-            <Button variant="contained">{currentCanvasIndex + 1}</Button>
-            <Button variant="outlined" onClick={nextCanvas}>
-              <ArrowForwardIosOutlinedIcon />
-            </Button>
+      <div className="entire-container">
+        <div className="sidebar">
+          {" "}
+          <div className="previews">
+            {canvasData.map((page, index) => (
+              <div
+                key={index}
+                className={`preview-item ${
+                  index === currentCanvasIndex ? "active" : ""
+                }`}
+                onClick={() => handlePreviewClick(index)}
+              >
+                <img
+                  className="preview-image"
+                  src={page.imageData}
+                  alt={`Page ${index + 1}`}
+                />
+              </div>
+            ))}
           </div>
         </div>
-        <div className="secondr-container">
-          <div className="draw-container">
-            <Button onClick={drawtoggle} variant="outlined">
-              <ModeEditOutlineOutlinedIcon />
-            </Button>
-            <Button onClick={erase} variant="outlined">
-              <AutoFixHighOutlinedIcon />
-            </Button>
-            <Button onClick={erase} variant="outlined">
-              Undo
-            </Button>
+        <div className="canvas-container">
+          <div className="page-nav-container">
+            <BasicMenu className="draw-menu" />
+            <div className="select-con">
+              <Button variant="outlined" onClick={previousCanvas}>
+                <ArrowBackIosOutlinedIcon />
+              </Button>
+              <Button variant="contained">{currentCanvasIndex + 1}</Button>
+              <Button variant="outlined" onClick={nextCanvas}>
+                <ArrowForwardIosOutlinedIcon />
+              </Button>
+            </div>
           </div>
-          <div className="canf-container">
-            <Button onClick={DeleteCanvas} variant="outlined">
-              Delete Page
-            </Button>
-            <Button variant="outlined" onClick={clearFrame}>
-              Clear Page
-            </Button>
-            <Button variant="outlined" onClick={newCanvas}>
-              New Page
-            </Button>
+          <div className="secondr-container">
+            <div className="draw-container">
+              <Button onClick={drawtoggle} variant="outlined">
+                <ModeEditOutlineOutlinedIcon />
+              </Button>
+              <Button onClick={erase} variant="outlined">
+                <AutoFixHighOutlinedIcon />
+              </Button>
+              <Button onClick={erase} variant="outlined">
+                Undo
+              </Button>
+            </div>
+            <div className="canf-container">
+              <Button onClick={DeleteCanvas} variant="outlined">
+                Delete Page
+              </Button>
+              <Button variant="outlined" onClick={clearFrame}>
+                Clear Page
+              </Button>
+              <Button variant="outlined" onClick={newCanvas}>
+                New Page
+              </Button>
+            </div>
           </div>
+          <canvas
+            ref={canvasRef}
+            id="canvas"
+            width={window.innerWidth * 0.8}
+            height={window.innerHeight * 0.8}
+            onMouseDown={startDrawing}
+            onMouseMove={draw}
+            onMouseUp={stopDrawing}
+            onMouseLeave={stopDrawing}
+          ></canvas>
         </div>
-        <canvas
-          ref={canvasRef}
-          id="canvas"
-          width={window.innerWidth * 0.8}
-          height={window.innerHeight * 0.8}
-          onMouseDown={startDrawing}
-          onMouseMove={draw}
-          onMouseUp={stopDrawing}
-          onMouseLeave={stopDrawing}
-        ></canvas>
       </div>
       {showQuizBox && (
         <div className="outer-quiz-box">

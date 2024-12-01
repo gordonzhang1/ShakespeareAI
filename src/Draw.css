@@ -142,3 +142,32 @@ canvas {
   width: 4vw;
   height: auto;
 }
+
+.entire-container {
+  display: flex;
+}
+
+.sidebar {
+  margin-top: 13vh;
+  display: flex;
+  flex-direction: column;
+  width: 10vw;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+.previews {
+  max-height: calc(5 * 16vh); /* Assuming each preview image is 120px tall */
+  overflow-y: auto; /* Adds a scrollbar when content exceeds the height */
+}
+
+.preview-item {
+  width: fit-content; /* Ensures the item width fits the image */
+  margin: 5px 0;
+}
+
+.preview-image {
+  width: 100%; /* Make the image take up the full width of its parent */
+  height: auto;
+  object-fit: cover;
+}
