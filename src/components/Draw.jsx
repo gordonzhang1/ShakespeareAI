@@ -26,6 +26,7 @@ export default function Draw() {
   const [showButton, setShowButton] = useState(true); // To control animation visibility
   const [AIresponse, setAIresponse] = useState("");
   const [loading, setLoading] = useState(false); // Track loading state
+  const [color, setColor] = useState("#000000"); // Default drawing color (black)
   let saveTimeout = useRef(null);
 
   // Save the current canvas as a new drawing in Firestore
@@ -131,7 +132,7 @@ export default function Draw() {
       ctx.fill(); // Fill the circle with white to erase the content
     } else {
       ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
-      ctx.strokeStyle = "black";
+      ctx.strokeStyle = color;
       ctx.lineWidth = 2;
       ctx.stroke();
     }
@@ -293,6 +294,10 @@ export default function Draw() {
     setCurrentCanvasIndex(index);
   }
 
+  function handleColourChange(event) {
+    setColor(event.target.value); // Update the color state
+  }
+
   return (
     <>
       <div className="entire-container">
@@ -340,6 +345,19 @@ export default function Draw() {
               <Button onClick={erase} variant="outlined">
                 Undo
               </Button>
+              <div>
+                <input
+                  type="color"
+                  id="colour-switch"
+                  name="head"
+                  onChange={handleColourChange}
+                  style={{
+                    color: color,
+                    width: "3vw", // Adjust width
+                    height: "2.4vw",
+                  }}
+                />
+              </div>
             </div>
             <div className="canf-container">
               <Button onClick={DeleteCanvas} variant="outlined">
