@@ -34,8 +34,8 @@ canvas {
 .quiz-button {
   z-index: 999;
   position: fixed;
-  left: 77vw;
-  bottom: 7vh;
+  left: 83vw;
+  bottom: 5vh;
   display: flex;
 }
 .outer-quiz-box {
@@ -182,4 +182,9 @@ canvas {
   gap: 0.5vw;
   align-items: center;
   justify-content: center;
+}
+
+.canf-container {
+  display: flex;
+  gap: 0.5vw;
 }
