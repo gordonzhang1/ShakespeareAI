@@ -35,19 +35,19 @@ const items = [
     icon: <AutoFixHighRoundedIcon />,
     title: "Innovative functionality",
     description:
-      "Stay ahead with features that set new standards, addressing your evolving needs better than the rest.",
+      " Stay ahead with ShakespeareAI's cutting-edge features, offering advanced language processing that adapts to your needs and sets new standards in AI-powered creativity.",
   },
   {
     icon: <SupportAgentRoundedIcon />,
-    title: "Reliable support",
+    title: "Context-Aware Quizzing",
     description:
-      "Count on our responsive customer support, offering assistance that goes beyond the purchase.",
+      "With deep understanding of context, ShakespeareAI offers suggestions that fit seamlessly into your work, ensuring that each question that it gives you aligns with your vision and maintains coherence.",
   },
   {
     icon: <QueryStatsRoundedIcon />,
-    title: "Precision in every detail",
+    title: "Writing Style Flexibility",
     description:
-      "Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.",
+      "Whether you prefer formal, casual, or poetic writing, ShakespeareAI adapts its tone and style to suit your unique preferences, delivering a personalized set of quiz questions tailored just for you",
   },
 ];
 
@@ -83,8 +83,7 @@ export default function Highlights() {
           <Typography variant="body1" sx={{ color: "grey.400" }}>
             Intuitive AI-powered note-taking, personalized quizzes to reinforce
             learning and an elegant, user-friendly interface. Experience
-            precision, innovation, and reliable support tailored for your
-            success.
+            precision and innovation tailored for your success.
           </Typography>
         </Box>
         <Grid container spacing={2}>

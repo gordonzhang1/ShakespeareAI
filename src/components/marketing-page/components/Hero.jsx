@@ -144,17 +144,6 @@ export default function Hero() {
               Start now
             </Button>
           </Stack>
-          <Typography
-            variant="caption"
-            color="text.secondary"
-            sx={{ textAlign: "center" }}
-          >
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
-            <Link href="#" color="primary">
-              Terms & Conditions
-            </Link>
-            .
-          </Typography>
         </Stack>
         <StyledBox id="image" />
       </Container>
