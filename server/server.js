@@ -4,6 +4,9 @@ import express from "express";
 import cors from "cors";
 import OpenAI from "openai";
 import multer from "multer";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 app.use(cors());
