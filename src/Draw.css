@@ -34,7 +34,7 @@ canvas {
 .quiz-button {
   z-index: 999;
   position: fixed;
-  left: 83vw;
+  left: 84vw;
   bottom: 5vh;
   display: flex;
 }
