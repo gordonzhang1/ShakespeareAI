@@ -45,6 +45,7 @@ canvas {
   position: absolute;
   z-index: 999;
   bottom: 20vh;
+  left: 15vw;
 }
 
 #quizBox {
@@ -83,8 +84,7 @@ canvas {
 }
 
 .stars-img {
-  width: 2vw;
-  height: auto;
+  height: 1vh;
 }
 
 .star-con {

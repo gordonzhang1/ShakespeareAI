@@ -13,7 +13,7 @@ import axios from "axios";
 import Stars from "../assets/Stars.png";
 import CircularProgress from "@mui/material/CircularProgress";
 import BasicMenu from "./Menu";
-import Logo from "../assets/logo-tran.png";
+import Logo from "../assets/logo-tran-cropped.png";
 
 export default function Draw() {
   const canvasRef = useRef(null);
@@ -184,6 +184,7 @@ export default function Draw() {
     // Switch to the new blank canvas by updating the index
     setCurrentCanvasIndex(currentCanvasIndex + 1);
   }
+
   function clearFrame() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -328,7 +329,7 @@ export default function Draw() {
               <Button variant="outlined" onClick={previousCanvas}>
                 <ArrowBackIosOutlinedIcon />
               </Button>
-              <Button variant="contained">{currentCanvasIndex + 1}</Button>
+              <Button variant="contained">{currentCanvasIndex + 1} </Button>
               <Button variant="outlined" onClick={nextCanvas}>
                 <ArrowForwardIosOutlinedIcon />
               </Button>
@@ -341,9 +342,6 @@ export default function Draw() {
               </Button>
               <Button onClick={erase} variant="outlined">
                 <AutoFixHighOutlinedIcon />
-              </Button>
-              <Button onClick={erase} variant="outlined">
-                Undo
               </Button>
               <div>
                 <input
@@ -421,7 +419,11 @@ export default function Draw() {
             }}
           >
             <div className="star-con">
-              <img className="stars-img" src={Logo} />
+              <img
+                className="stars-img"
+                src={Logo}
+                style={{ height: "6vh", width: "auto" }}
+              />
               {quizButtonText}
             </div>
           </Button>
