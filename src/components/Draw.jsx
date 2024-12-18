@@ -353,6 +353,7 @@ export default function Draw() {
                   onChange={handleColourChange}
                   style={{
                     color: color,
+                    marginTop: "0.5vh",
                     width: "3vw", // Adjust width
                     height: "2.4vw",
                   }}
