@@ -22,6 +22,7 @@ import { useState } from "react";
 import { useAuth } from "../../../server/authcontext";
 import { useRef } from "react";
 import { Alert } from "react-bootstrap";
+import logo2 from "../../assets/logo-tran-cropped.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -130,6 +131,9 @@ export default function SignIn(props) {
     }
     return isValid;
   };
+  function home() {
+    navigate("/");
+  }
 
   return (
     <AppTheme {...props}>
@@ -139,7 +143,34 @@ export default function SignIn(props) {
           sx={{ position: "fixed", top: "1rem", right: "1rem" }}
         />
         <Card variant="outlined">
-          <SitemarkIcon />
+          <div
+            className="logo-sign-in"
+            style={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={logo2}
+              style={{
+                width: "2vw",
+                height: "auto",
+                cursor: "pointer",
+              }}
+              onClick={home}
+            />
+            <div
+              style={{
+                fontWeight: "bold",
+                fontSize: "1rem",
+                color: "#0077b6",
+                cursor: "pointer",
+              }}
+              onClick={home}
+            >
+              ShakespeareAI
+            </div>
+          </div>
           <Typography
             component="h1"
             variant="h4"
@@ -193,10 +224,6 @@ export default function SignIn(props) {
                 color={passwordError ? "error" : "primary"}
               />
             </FormControl>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <ForgotPassword open={open} handleClose={handleClose} />
             <Button
               type="submit"
@@ -218,22 +245,6 @@ export default function SignIn(props) {
           </Box>
           <Divider>or</Divider>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert("Sign in with Google")}
-              startIcon={<GoogleIcon />}
-            >
-              Sign in with Google
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert("Sign in with Facebook")}
-              startIcon={<FacebookIcon />}
-            >
-              Sign in with Facebook
-            </Button>
             <Typography sx={{ textAlign: "center" }}>
               Don&apos;t have an account?{" "}
               <Link

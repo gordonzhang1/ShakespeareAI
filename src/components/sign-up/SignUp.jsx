@@ -23,6 +23,7 @@ import { useRef } from "react";
 import { Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEmail } from "../EmailContext";
+import logo2 from "../../assets/logo-tran-cropped.png";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -136,6 +137,9 @@ export default function SignUp(props) {
 
     return isValid;
   };
+  function home() {
+    navigate("/");
+  }
 
   return (
     <AppTheme {...props}>
@@ -143,7 +147,34 @@ export default function SignUp(props) {
       <ColorModeSelect sx={{ position: "fixed", top: "1rem", right: "1rem" }} />
       <SignUpContainer direction="column" justifyContent="space-between">
         <Card variant="outlined">
-          <SitemarkIcon />
+          <div
+            className="logo-sign-in"
+            style={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={logo2}
+              style={{
+                width: "2vw",
+                height: "auto",
+                cursor: "pointer",
+              }}
+              onClick={home}
+            />
+            <div
+              style={{
+                fontWeight: "bold",
+                fontSize: "1rem",
+                color: "#0077b6",
+                cursor: "pointer",
+              }}
+              onClick={home}
+            >
+              ShakespeareAI
+            </div>
+          </div>
           <Typography
             component="h1"
             variant="h4"
@@ -221,22 +252,6 @@ export default function SignUp(props) {
             <Typography sx={{ color: "text.secondary" }}>or</Typography>
           </Divider>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert("Sign up with Google")}
-              startIcon={<GoogleIcon />}
-            >
-              Sign up with Google
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert("Sign up with Facebook")}
-              startIcon={<FacebookIcon />}
-            >
-              Sign up with Facebook
-            </Button>
             <Typography sx={{ textAlign: "center" }}>
               Already have an account?{" "}
               <Link

@@ -27,7 +27,7 @@ const items = [
   },
   {
     icon: <ThumbUpAltRoundedIcon />,
-    title: "Great user experience",
+    title: "User Friendly",
     description:
       "Integrate our product into your routine with an intuitive and easy-to-use interface.",
   },
