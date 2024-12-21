@@ -370,16 +370,46 @@ export default function Draw() {
               </Button>
             </div>
           </div>
-          <canvas
-            ref={canvasRef}
-            id="canvas"
-            width={window.innerWidth * 0.8}
-            height={window.innerHeight * 0.8}
-            onMouseDown={startDrawing}
-            onMouseMove={draw}
-            onMouseUp={stopDrawing}
-            onMouseLeave={stopDrawing}
-          ></canvas>
+          <div className="canvas-button-con">
+            <canvas
+              ref={canvasRef}
+              id="canvas"
+              width={window.innerWidth * 0.8}
+              height={window.innerHeight * 0.8}
+              onMouseDown={startDrawing}
+              onMouseMove={draw}
+              onMouseUp={stopDrawing}
+              onMouseLeave={stopDrawing}
+            ></canvas>
+            <Box
+              sx={{ textAlign: "center", marginTop: 20 }}
+              className="quiz-button"
+            >
+              <Zoom in={showButton} timeout={300}>
+                <Button
+                  className="quiz-button-inner"
+                  variant="contained"
+                  onClick={submit}
+                  sx={{
+                    fontSize: "16px",
+                    transition: "all 0.3s ease",
+                    boxShadow: "none",
+                    borderRadius: "12px",
+                    backgroundColor: "#000435",
+                  }}
+                >
+                  <div className="star-con">
+                    <img
+                      className="stars-img"
+                      src={Logo}
+                      style={{ height: "6vh", width: "auto" }}
+                    />
+                    {quizButtonText}
+                  </div>
+                </Button>
+              </Zoom>
+            </Box>
+          </div>
         </div>
       </div>
       {showQuizBox && (
@@ -403,32 +433,6 @@ export default function Draw() {
           </div>
         </div>
       )}
-
-      <Box sx={{ textAlign: "center", marginTop: 20 }} className="quiz-button">
-        <Zoom in={showButton} timeout={300}>
-          <Button
-            className="quiz-button-inner"
-            variant="contained"
-            onClick={submit}
-            sx={{
-              fontSize: "16px",
-              transition: "all 0.3s ease",
-              boxShadow: "none",
-              borderRadius: "12px",
-              backgroundColor: "#000435",
-            }}
-          >
-            <div className="star-con">
-              <img
-                className="stars-img"
-                src={Logo}
-                style={{ height: "6vh", width: "auto" }}
-              />
-              {quizButtonText}
-            </div>
-          </Button>
-        </Zoom>
-      </Box>
     </>
   );
 }

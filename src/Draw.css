@@ -31,12 +31,19 @@ canvas {
   display: flex;
   justify-content: space-between;
 }
+
+.canvas-button-container {
+  width: 100%;
+  position: relative;
+}
 .quiz-button {
   z-index: 999;
-  position: fixed;
-  left: 84vw;
-  bottom: 5vh;
+  position: absolute;
   display: flex;
+  top: 68%;
+  left: 83%;
+  height: 7vh;
+  width: 12vw;
 }
 .outer-quiz-box {
   width: 80vw;
