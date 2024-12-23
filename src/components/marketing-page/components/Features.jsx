@@ -6,6 +6,8 @@ import Card from "@mui/material/Card";
 import MuiChip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import cover from "../../../assets/sa-cover.jpeg";
+import quiz from "../../../assets/quiz.jpeg";
 
 import { styled } from "@mui/material/styles";
 
@@ -19,24 +21,24 @@ const items = [
     title: "Dashboard",
     description:
       "Our dashboard features a simple digital-note taking design and saves your notes to your account.",
-    imageLight: `url("${"https://mui.com"}/static/images/templates/templates-images/dash-light.png")`,
-    imageDark: `url("${"https://mui.com"}/static/images/templates/templates-images/dash-dark.png")`,
+    imageLight: `url(${cover})`,
+    imageDark: `url(${cover})`,
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
     title: "Quiz Me!",
     description:
       "Simply press quiz me and our AI model will take the information that you wrote down and quiz you on it.",
-    imageLight: `url("${"https://mui.com"}/static/images/templates/templates-images/mobile-light.png")`,
-    imageDark: `url("${"https://mui.com"}/static/images/templates/templates-images/mobile-dark.png")`,
+    imageLight: `url(${quiz})`,
+    imageDark: `url(${quiz})`,
   },
   {
     icon: <DevicesRoundedIcon />,
     title: "Seamless Synchronization",
     description:
       "Your notes and progress are automatically synced across all your devices, ensuring you can pick up right where you left off.",
-    imageLight: `url("${"https://mui.com"}/static/images/templates/templates-images/devices-light.png")`,
-    imageDark: `url("${"https://mui.com"}/static/images/templates/templates-images/devices-dark.png")`,
+    imageLight: `url("${"https://mui.com"}/static/images/templates/templates-images/mobile-light.png")`,
+    imageDark: `url("${"https://mui.com"}/static/images/templates/templates-images/mobile-dark.png")`,
   },
 ];
 
