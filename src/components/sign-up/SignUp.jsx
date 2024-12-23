@@ -80,7 +80,7 @@ export default function SignUp(props) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { email } = useEmail(); // Access the email state
+  const { email, setEmail } = useEmail(); // Access the email state
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -140,6 +140,12 @@ export default function SignUp(props) {
   function home() {
     navigate("/");
   }
+  const handleEmailChange = (event) => {
+    const newEmail = event.target.value;
+    setEmail(newEmail); // Update the email value
+
+    // Optionally, include validation logic within `useEmail` or here
+  };
 
   return (
     <AppTheme {...props}>
@@ -201,6 +207,7 @@ export default function SignUp(props) {
                 helperText={emailErrorMessage}
                 color={passwordError ? "error" : "primary"}
                 value={email}
+                onChange={handleEmailChange}
               />
             </FormControl>
             <FormControl>
