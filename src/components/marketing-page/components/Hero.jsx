@@ -16,7 +16,7 @@ import cover from "../../../assets/sa-cover.jpeg";
 
 const StyledBox = styled("div")(({ theme }) => ({
   alignSelf: "center",
-  width: "105%",
+  width: "110%",
   height: 400,
   marginTop: theme.spacing(8),
   borderRadius: (theme.vars || theme).shape.borderRadius,
