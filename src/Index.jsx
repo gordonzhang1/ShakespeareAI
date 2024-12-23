@@ -5,7 +5,7 @@ import SignupOld from "./components/SignupOld";
 import { AuthProvider } from "../server/authcontext";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
-import ForgotPassword from "./components/ForgotPassword";
+import ForgotPassword from "./components/ForgotPasswordOld";
 import UpdateProfile from "./components/UpdateProfile";
 import FrontPage from "./components/FrontPage";
 import SigninNew from "./components/SigninNew";
