@@ -50,6 +50,10 @@ export default function Draw() {
           console.log("Canvas data saved to Firestore");
           setCanvasData(updatedCanvasData); // Update local state
           // No need to change currentCanvasIndex, as it already refers to the current canvas
+        } else {
+          // If the document does not exist, create a new one
+          await setDoc(docRef, { canvasData: [{ imageData: dataURL }] });
+          console.log("Canvas data saved for new user");
         }
       } catch (error) {
         console.log("Failed to save data to firestore ", error);
@@ -136,6 +140,7 @@ export default function Draw() {
       ctx.lineWidth = 2;
       ctx.stroke();
     }
+    console.log("saved");
     debounceSave();
   }
 
