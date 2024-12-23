@@ -12,6 +12,7 @@ import FacebookIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/X";
 import SitemarkIcon from "./SitemarkIcon";
+import logo2 from "../../../assets/logo-tran-cropped.png";
 
 function Copyright() {
   return (
@@ -64,7 +65,30 @@ export default function Footer() {
           }}
         >
           <Box sx={{ width: { xs: "100%", sm: "60%" } }}>
-            <SitemarkIcon />
+            <div
+              className="logo-sign-in"
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={logo2}
+                style={{
+                  width: "2vw",
+                  height: "auto",
+                }}
+              />
+              <div
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "1rem",
+                  color: "#0077b6",
+                }}
+              >
+                ShakespeareAI
+              </div>
+            </div>
             <Typography
               variant="body2"
               gutterBottom
