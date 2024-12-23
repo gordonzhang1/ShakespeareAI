@@ -67,6 +67,11 @@ function ForgotPassword({ open, handleClose }) {
           fullWidth
           inputRef={emailRef}
         />
+        {message && (
+          <Alert variant="success" style={{ marginTop: "10px" }}>
+            {message}
+          </Alert>
+        )}
       </DialogContent>
       <DialogActions sx={{ pb: 3, px: 3 }}>
         <Button onClick={handleClose}>Cancel</Button>
