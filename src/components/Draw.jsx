@@ -256,6 +256,10 @@ export default function Draw() {
 
   function submit() {
     const canvas = canvasRef.current;
+    if (!canvas) {
+      console.error("Canvas not found.");
+      return;
+    }
     // Hide the button initially
     setShowButton(false);
 
@@ -268,6 +272,10 @@ export default function Draw() {
     }, 150);
 
     canvas.toBlob(async (blob) => {
+      if (!blob) {
+        console.error("Failed to convert canvas to Blob.");
+        return;
+      }
       const formData = new FormData();
       formData.append("image", blob, "image.png");
 
