@@ -17,6 +17,11 @@ const upload = multer({ storage: storage });
 
 app.post("/backend", upload.single("image"), async (req, res) => {
   try {
+    console.log(
+      "Google Application Credentials Path:",
+      process.env.GOOGLE_APPLICATION_CREDENTIALS
+    );
+
     const imageBuffer = req.file.buffer;
     const client = new vision.ImageAnnotatorClient();
 
