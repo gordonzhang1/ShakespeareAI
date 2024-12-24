@@ -21,11 +21,6 @@ app.post("/backend", upload.single("image"), async (req, res) => {
       throw new Error("No file uploaded or file buffer missing");
     }
 
-    console.log(
-      "Google Application Credentials Path:",
-      process.env.GOOGLE_APPLICATION_CREDENTIALS
-    );
-
     const imageBuffer = req.file.buffer;
     const client = new vision.ImageAnnotatorClient();
 
