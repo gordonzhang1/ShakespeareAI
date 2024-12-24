@@ -17,6 +17,10 @@ const upload = multer({ storage: storage });
 
 app.post("/backend", upload.single("image"), async (req, res) => {
   try {
+    if (!req.file || !req.file.buffer) {
+      throw new Error("No file uploaded or file buffer missing");
+    }
+
     console.log(
       "Google Application Credentials Path:",
       process.env.GOOGLE_APPLICATION_CREDENTIALS
@@ -29,6 +33,12 @@ app.post("/backend", upload.single("image"), async (req, res) => {
     const [result] = await client.documentTextDetection({
       image: { content: imageBuffer },
     });
+
+    if (result.error) {
+      console.error("Vision API error:", result.error);
+      throw new Error("Vision API error");
+    }
+
     const fullTextAnnotation = result.fullTextAnnotation;
     console.log(`Full text: ${fullTextAnnotation.text}`);
 
