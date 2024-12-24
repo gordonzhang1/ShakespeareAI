@@ -67,7 +67,7 @@ app.post("/backend", upload.single("image"), async (req, res) => {
     console.log(completion.choices[0].message.content);
 
     res.send(completion.choices[0].message.content);
-  } catch {
+  } catch (error) {
     console.error("Error occurred:", error); // More detailed logging
     res
       .status(500)
