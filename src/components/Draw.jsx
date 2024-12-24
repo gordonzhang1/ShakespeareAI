@@ -276,8 +276,12 @@ export default function Draw() {
         console.error("Failed to convert canvas to Blob.");
         return;
       }
+      console.log("Blob created:", blob);
+
       const formData = new FormData();
       formData.append("image", blob, "image.png");
+
+      console.log("FormData:", formData);
 
       try {
         console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL);

@@ -7,7 +7,7 @@ dotenv.config();
 
 // Configure multer for memory storage
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage }).single("image"); // Ensure this matches the frontend field name
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
