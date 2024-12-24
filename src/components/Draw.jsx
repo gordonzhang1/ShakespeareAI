@@ -272,6 +272,7 @@ export default function Draw() {
       formData.append("image", blob, "image.png");
 
       try {
+        console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL);
         setLoading(true);
         const response = await axios.post(
           import.meta.env.VITE_BACKEND_URL,
