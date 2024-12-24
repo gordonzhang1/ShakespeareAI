@@ -34,6 +34,8 @@ app.post("/backend", upload.single("image"), async (req, res) => {
       image: { content: imageBuffer },
     });
 
+    console.log("Vision API result:", result);
+
     if (result.error) {
       console.error("Vision API error:", result.error);
       throw new Error("Vision API error");
@@ -66,7 +68,10 @@ app.post("/backend", upload.single("image"), async (req, res) => {
 
     res.send(completion.choices[0].message.content);
   } catch {
-    res.status(500).send({ error: "Failed to process the image" });
+    console.error("Error occurred:", error); // More detailed logging
+    res
+      .status(500)
+      .send({ error: "Failed to process the image", details: error.message });
   }
 });
 
