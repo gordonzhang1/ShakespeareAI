@@ -284,10 +284,7 @@ export default function Draw() {
         setLoading(true);
         const response = await axios.post(
           import.meta.env.VITE_BACKEND_URL,
-          formData,
-          {
-            headers: { "Content-Type": "multipart/form-data" },
-          }
+          formData
         );
         console.log(response.data);
         setAIresponse(response.data);
