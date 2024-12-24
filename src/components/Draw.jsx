@@ -274,7 +274,7 @@ export default function Draw() {
       try {
         setLoading(true);
         const response = await axios.post(
-          "http://localhost:3000/backend",
+          import.meta.env.VITE_BACKEND_URL,
           formData,
           {
             headers: { "Content-Type": "multipart/form-data" },
