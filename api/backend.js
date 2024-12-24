@@ -10,6 +10,8 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 export default async function handler(req, res) {
+  console.log("Received request:", req.body);
+
   res.setHeader("Access-Control-Allow-Origin", "*"); // For all origins (use specific URL in production)
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
@@ -17,6 +19,8 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const imageBuffer = req.body.image; // Assuming image data is sent in the body as a buffer
+      console.log("Image buffer received:", imageBuffer);
+
       const client = new vision.ImageAnnotatorClient();
 
       // Perform text detection on the image buffer
@@ -24,6 +28,7 @@ export default async function handler(req, res) {
         image: { content: imageBuffer },
       });
       const fullTextAnnotation = result.fullTextAnnotation;
+      console.log("Full text annotation:", fullTextAnnotation);
 
       // OpenAI API integration
       const openai = new OpenAI({
@@ -48,6 +53,9 @@ export default async function handler(req, res) {
       res.status(200).json({ result: completion.choices[0].message.content });
     } catch (error) {
       res.status(500).json({ error: "Failed to process the image" });
+      console.error("Error details:", error);
+      console.error("Error message:", error.message);
+      console.error("Error stack:", error.stack);
     }
   } else {
     res.status(405).json({ error: "Method Not Allowed" });
