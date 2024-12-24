@@ -10,6 +10,10 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*"); // For all origins (use specific URL in production)
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
   if (req.method === "POST") {
     try {
       const imageBuffer = req.body.image; // Assuming image data is sent in the body as a buffer
