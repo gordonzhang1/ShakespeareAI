@@ -10,50 +10,58 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 export default async function handler(req, res) {
-  console.log("Received request:", req.body);
-
-  res.setHeader("Access-Control-Allow-Origin", "*"); // For all origins (use specific URL in production)
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  try {
-    const imageBuffer = req.body.image; // Assuming image data is sent in the body as a buffer
-    console.log("Image buffer received:", imageBuffer);
+  // Use multer middleware to handle multipart/form-data
+  upload.single("image")(req, res, async (err) => {
+    // Handle any multer errors
+    if (err) {
+      return res
+        .status(400)
+        .json({ error: "Error processing the file upload" });
+    }
 
-    const client = new vision.ImageAnnotatorClient();
+    try {
+      const imageBuffer = req.file?.buffer; // Access the image buffer from req.file
 
-    // Perform text detection on the image buffer
-    const [result] = await client.documentTextDetection({
-      image: { content: imageBuffer },
-    });
-    const fullTextAnnotation = result.fullTextAnnotation;
-    console.log("Full text annotation:", fullTextAnnotation);
+      if (!imageBuffer) {
+        return res.status(400).json({ error: "No image file uploaded" });
+      }
 
-    // OpenAI API integration
-    const openai = new OpenAI({
-      apiKey: process.env.OpenAI_API_KEY,
-    });
+      // Initialize the Google Vision client
+      const client = new vision.ImageAnnotatorClient();
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content:
-            "You will create questions based exactly on the information given to quiz the user, and end all questions with a question mark",
-        },
-        {
-          role: "user",
-          content: fullTextAnnotation.text,
-        },
-      ],
-    });
+      // Perform text detection on the image buffer
+      const [result] = await client.documentTextDetection({
+        image: { content: imageBuffer },
+      });
+      const fullTextAnnotation = result.fullTextAnnotation;
 
-    res.status(200).json({ result: completion.choices[0].message.content });
-  } catch (error) {
-    res.status(500).json({ error: "Failed to process the image" });
-    console.error("Error details:", error);
-    console.error("Error message:", error.message);
-    console.error("Error stack:", error.stack);
-  }
+      // OpenAI API integration
+      const openai = new OpenAI({
+        apiKey: process.env.OpenAI_API_KEY,
+      });
+
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [
+          {
+            role: "system",
+            content:
+              "You will create questions based exactly on the information given to quiz the user, and end all questions with a question mark",
+          },
+          {
+            role: "user",
+            content: fullTextAnnotation.text,
+          },
+        ],
+      });
+
+      res.status(200).json({ result: completion.choices[0].message.content });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to process the image" });
+    }
+  });
 }
