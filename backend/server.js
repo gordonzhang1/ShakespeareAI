@@ -55,6 +55,10 @@ app.post("/backend", upload.single("image"), async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
