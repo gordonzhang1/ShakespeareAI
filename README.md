@@ -157,27 +157,13 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Top contributors:
-
-<a href="https://github.com/gordonzhang1/ShakespeareAI/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=gordonzhang1/ShakespeareAI" alt="contrib.rocks image" />
-</a>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the project_license. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - g234zhan@uwaterloo.ca@g234zhan@uwaterloo.ca_client.com
+Gordon Zhang - g234zhan@uwaterloo.ca
 
 Project Link: [https://github.com/gordonzhang1/ShakespeareAI](https://github.com/gordonzhang1/ShakespeareAI)
 
@@ -185,14 +171,6 @@ Project Link: [https://github.com/gordonzhang1/ShakespeareAI](https://github.com
 
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
