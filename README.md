@@ -114,7 +114,7 @@ And more to come!
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<p>Here are some pictures of this web app in action</p>
+<p>Here are some pictures of this web app in action.</p>
 <img src="/src/assets/sa-cover.jpeg" alt="Logo" width="1000" height="auto">
 <img src="/src/assets/quiz.jpeg" alt="Logo" width="1000" height="auto">
 
