@@ -112,7 +112,7 @@ And more to come!
 <!-- GETTING STARTED -->
 ## Getting Started
 
-<p>Simply go to <a href="https://www.shakespeareai.ca/">www.shakespeareai.ca</a> and create an account to start</p>
+<p>Want to try ShakespeareAI out? Go to <a href="https://www.shakespeareai.ca/">www.shakespeareai.ca</a> and sign up. Once logged in, write the first fact that comes to mind, and press Quiz Me</p>
 
 
 
