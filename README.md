@@ -85,6 +85,8 @@
 </h3>
 <p>When the user finishes taking notes and presses "Quiz Me," the app sends the handwriting to Google's Cloud Vision API to convert it into text. That text is then sent to the OpenAI API, which generates a list of questions based on the content. The questions are displayed to the user, making it easy to review and reinforce their learning.
 </p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ### Built With
 
@@ -95,6 +97,7 @@
 * [![Firebase][Firebase]][Firebase-url]
 * [![Firestore][Firestore]][Firestore-url]
 * [![C++][Cpp]][Cpp-url]
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## Features
@@ -106,6 +109,7 @@
   <li><strong>Data Storage:</strong>Store user data and notes in Firestore for easy access and management.</li>
 </ul>
 And more to come! 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -113,6 +117,7 @@ And more to come!
 ## Getting Started
 
 <p>Want to try ShakespeareAI out? Go to <a href="https://www.shakespeareai.ca/">www.shakespeareai.ca</a> and sign up. Once logged in, write the first fact that comes to mind, and press Quiz Me</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
@@ -121,23 +126,9 @@ And more to come!
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/gordonzhang1/ShakespeareAI/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
