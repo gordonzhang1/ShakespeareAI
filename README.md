@@ -90,8 +90,6 @@
 * [![Firebase][Firebase]][Firebase-url]
 * [![Firestore][Firestore]][Firestore-url]
 * [![C++][Cpp]][Cpp-url]
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## Features
 <ul>
