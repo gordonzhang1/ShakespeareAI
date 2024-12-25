@@ -25,9 +25,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/gordonzhang1/ShakespeareAI">
-    <img src="/src/assets/sa-cover.jpeg" alt="Logo" width="1000" height="auto">
-  </a>
 
 <h3 align="center">ShakespeareAI</h3>
 
@@ -78,8 +75,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
+  <a href="https://github.com/gordonzhang1/ShakespeareAI">
+    <img src="/src/assets/sa-cover.jpeg" alt="Logo" width="1000" height="auto">
+  </a>
 Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `gordonzhang1`, `ShakespeareAI`, `twitter_handle`, `gordonzhang1`, `g234zhan@uwaterloo.ca_client`, `g234zhan@uwaterloo.ca`, `project_title`, `project_description`, `project_license`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
