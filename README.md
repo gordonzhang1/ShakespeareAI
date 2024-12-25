@@ -106,7 +106,7 @@ And more to come!
 <!-- GETTING STARTED -->
 ## Getting Started
 
-<p>Want to try ShakespeareAI out? Go to <a href="https://www.shakespeareai.ca/">www.shakespeareai.ca</a> and sign up. Once logged in, write the first fact that comes to mind, and press Quiz Me</p>
+<p>Want to try ShakespeareAI out? Go to <a href="https://www.shakespeareai.ca/">www.shakespeareai.ca</a> and sign up. Once logged in, write the first fact that comes to mind, and press Quiz Me.</p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
