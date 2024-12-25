@@ -86,6 +86,16 @@
 <p>When the user finishes taking notes and presses "Quiz Me," the app sends the handwriting to Google's Cloud Vision API to convert it into text. That text is then sent to the OpenAI API, which generates a list of questions based on the content. The questions are displayed to the user, making it easy to review and reinforce their learning.
 </p>
 
+<h3>Key Features:</h3>
+<ul>
+  <li>User Signup</li>
+  <li>User Login</li>
+  <li>Password Reset</li>
+  <li>Update Profile</li>
+  <li>Quiz Me Functionality</li>
+</ul>
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
