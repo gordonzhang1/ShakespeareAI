@@ -256,7 +256,7 @@ Project Link: [https://github.com/gordonzhang1/ShakespeareAI](https://github.com
 [Node-url]: https://nodejs.org/
 
 [OpenAI-API]: https://img.shields.io/badge/OpenAI%20API-412991?style=for-the-badge&logo=openai&logoColor=white
-[OpenAI-url]: https://openai.com/api/
+[OpenAI-API-url]: https://openai.com/api/
 
 [GCP]: https://img.shields.io/badge/Cloud%20Vision%20API-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white
 [GCP-url]: https://cloud.google.com/vision/
