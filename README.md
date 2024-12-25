@@ -88,7 +88,7 @@ Here's a blank template to get started. To avoid retyping too much info, do a se
 
 * [![React][React.js]][React-url]
 * [![Node.js][Node.js]][Node-url]
-* [![OpenAI API][OpenAI API]][OpenAI-url]
+* [![OpenAI API][OpenAI]][OpenAI-url]
 * [![Cloud Vision API][GCP]][GCP-url]
 * [![Firebase][Firebase]][Firebase-url]
 * [![Firestore][Firestore]][Firestore-url]
