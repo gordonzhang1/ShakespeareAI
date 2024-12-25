@@ -26,7 +26,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/gordonzhang1/ShakespeareAI">
-    <img src="../src/assets/sa-cover.jpeg" alt="Logo" width="80" height="80">
+    <img src="/src/assets/sa-cover.jpeg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">ShakespeareAI</h3>
