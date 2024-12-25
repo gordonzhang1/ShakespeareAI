@@ -81,12 +81,13 @@
   <p>  ShakespeareAI is a digital notetaking app built with a React frontend and a Node.js backend. It uses Firebase for user authentication and Firestore to store user data. 
 </p>
 
-<h3>  How it works:
+<h3>  How it works
 </h3>
 <p>When the user finishes taking notes and presses "Quiz Me," the app sends the handwriting to Google's Cloud Vision API to convert it into text. That text is then sent to the OpenAI API, which generates a list of questions based on the content. The questions are displayed to the user, making it easy to review and reinforce their learning.
 </p>
 
-<h3>Features:</h3>
+
+## Features
 <ul>
   <li><strong>Digital Note-Pad:</strong> A note-taking experience that allows users to write, draw, erase, and change colour on a canvas. Additionally, users can also add new pages, delete pages, and clear pages, all which is saved to their account</li>
   <li><strong>Quiz Generation</strong>After taking notes, users can press "Quiz Me" to generate a set of questions based on their notes.</li>
