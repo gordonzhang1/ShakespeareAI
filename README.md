@@ -26,7 +26,7 @@
 <br />
 <div align="center">
 
-<h3 align="center">ShakespeareAI</h3>
+<h1 align="center">ShakespeareAI</h1>
 
   <p align="center">
     ShakespeareAI is a AI digital note-taking web app that quizzes you based on your handwritten notes in real-time. Press Quiz Me, and ShakespeareAI transforms your notes and drawings into a personalized set of questions, helping you retain information more effectively.
