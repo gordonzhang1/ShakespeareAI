@@ -96,10 +96,9 @@
 ## Features
 <ul>
   <li><strong>Digital Note-Pad:</strong> A note-taking experience that allows users to write, draw, erase, and change colour on a canvas. Additionally, users can also add new pages, delete pages, and clear pages, all which is saved to their account</li>
-  <li><strong>Quiz Generation</strong>After taking notes, users can press "Quiz Me" to generate a set of questions based on their notes.</li>
-  <li>Page Features(Add Page, Delete Page, Clear Page</li>
-  <li><strong>User Authentication:</strong>Secure sign-in and registration using Firebase for user management, along with forgot password and update profile fuctionalities</li>
-  <li><strong>Data Storage:</strong>Store user data and notes in Firestore for easy access and management.</li>
+  <li><strong>Quiz Generation:</strong> After taking notes, users can press "Quiz Me" to generate a set of questions based on their notes.</li>
+  <li><strong>User Authentication:</strong> Secure sign-in and registration using Firebase for user management, along with forgot password and update profile fuctionalities</li>
+  <li><strong>Data Storage:</strong> Store user data and notes in Firestore for easy access and management.</li>
 </ul>
 And more to come! 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
