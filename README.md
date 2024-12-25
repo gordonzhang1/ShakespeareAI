@@ -78,8 +78,8 @@
   <a href="https://github.com/gordonzhang1/ShakespeareAI">
     <img src="/src/assets/sa-cover.jpeg" alt="Logo" width="1000" height="auto">
   </a>
-  ShakespeareAI is a digital notetaking app built with a React frontend and a Node.js backend. It uses Firebase for user authentication and Firestore to store user data. 
-<br/>
+  <p>  ShakespeareAI is a digital notetaking app built with a React frontend and a Node.js backend. It uses Firebase for user authentication and Firestore to store user data. 
+</p>
 
 
   How it works:
