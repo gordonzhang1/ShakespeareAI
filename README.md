@@ -76,7 +76,7 @@
 
 <h3>  How it works
 </h3>
-<p>When the user finishes taking notes and presses "Quiz Me," the app sends the handwriting to Google's Cloud Vision API to convert it into text. That text is then sent to the OpenAI API, which generates a list of questions based on the content. The questions are displayed to the user, making it easy to review and reinforce their learning.
+<p>When the user finishes taking notes and presses "Quiz Me," the app sends an image of the handwriting to Google's Cloud Vision API to convert it into text. That text is then sent to the OpenAI API, which generates a list of questions based on the content. The questions are displayed to the user, making it easy to review and reinforce their learning.
 </p>
 
 
@@ -88,6 +88,11 @@
 * [![Cloud Vision API][GCP]][GCP-url]
 * [![Firebase][Firebase]][Firebase-url]
 * [![Firestore][Firestore]][Firestore-url]
+
+### Deployed With
+* [![Vercel][Vercel]][Vercel-url]
+* [![Render][Render]][Render-url]
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Features
@@ -206,4 +211,9 @@ Project Link: [https://github.com/gordonzhang1/ShakespeareAI](https://github.com
 
 [Cpp]: https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white
 [Cpp-url]: https://isocpp.org/
+
+[Vercel]: https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white
+[Vercel-url]: https://vercel.com/
+[Render]: https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=white
+[Render-url]: https://render.com/
 
