@@ -78,6 +78,7 @@
 </h3>
 <p>When the user finishes taking notes and presses "Quiz Me," the app sends an image of the handwriting to Google's Cloud Vision API to convert it into text. That text is then sent to the OpenAI API, which generates a list of questions based on the content. The questions are displayed to the user, making it easy to review and reinforce their learning.
 </p>
+<p>The frontend of is deployed on Vercel, and the backend is deployed on Render. </p>
 
 
 ### Built With
