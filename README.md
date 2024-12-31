@@ -76,8 +76,8 @@
 
 <h3>  How it works
 </h3>
-<p>When the user finishes taking notes and presses "Quiz Me," the app sends an image of the handwriting to Google's Cloud Vision API to convert it into text. That text is then sent to the OpenAI API, which generates a list of questions based on the content. The questions are displayed to the user, making it easy to review and reinforce their learning.
-</p>
+<p>When the user finishes taking notes and presses the "Quiz Me" button, the app captures an image of the handwritten notes via the HTML canvas graphic. This image is then sent via a POST request to the backend, which includes Google's Cloud Vision API. The API processes the image using optical character recognition (OCR) to detect and extract the handwritten text. The response from the API contains the recognized text, which is parsed and formatted by the app.</p> <p>Next, the extracted text is sent to the OpenAI API with additional parameters on the type of content to generate. OpenAI’s GPT model processes the text, analyzing the context and generating a list of relevant questions based on the content. This can include multiple-choice questions, true/false questions, or open-ended questions, depending on the text</p> <p>The generated questions are returned in the response to the app, which then displays them to the user in an easy-to-navigate interface. The user can now review the material, reinforcing their learning by answering the questions.</p>
+
 <p>The frontend of is deployed on Vercel, and the backend is deployed on Render. </p>
 
 
